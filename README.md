@@ -1,5 +1,5 @@
 # param-filter
-This simply replaces placeholders in files from supported parameter stores.
+This simply replaces placeholders in files using supported parameter stores.
 
 
 _Input Example:_

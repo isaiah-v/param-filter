@@ -19,7 +19,7 @@ java -jar param-filter.jar --input=<INPUT_FILE> --output=<OUTPUT_FILE>
 
 # Supported Parameter Stores
 ## Environment Variables
-Format: ```#{env.name}```
+Format: ```${env.name}```
 
 ## AWS SSM Paramiters
 Format: ```${aws.name}```

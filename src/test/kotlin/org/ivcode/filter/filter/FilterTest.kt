@@ -22,6 +22,7 @@ class FilterTest {
         "\${test.},\${test.}",        // Valid prefix with no name should not be interpreted
         "\${tst.a},\${tst.a}",        // Invalid prefix should not be interpreted
         "\${test.D},\${test.D}",      // Valid prefix with undefined param should not be interpreted
+        "\$host,\$host"
     ])
     fun test(input: String, expected: String) {
         val varMap = mapOf(

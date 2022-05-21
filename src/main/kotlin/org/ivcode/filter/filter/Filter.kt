@@ -39,7 +39,7 @@ class Filter(
     private fun inPlaceholder(reader: BufferedReader, writer: BufferedWriter) {
         var ich: Int = reader.read()
         if('{'!=ich.toChar()) {
-            writer.write("\$$ich")
+            writer.write("\$${ich.toChar()}")
             return
         }
 

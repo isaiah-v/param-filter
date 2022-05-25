@@ -1,5 +1,5 @@
 # param-filter
-This simply replaces placeholders in files using supported parameter stores.
+A filter that replaces placeholders in files using supported parameter stores. For simple cases, this solves my problem of cheking in property files without including secret information.
 
 
 _Input Example:_

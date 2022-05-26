@@ -13,8 +13,14 @@ Hello, my name is Bob
 ```
 
 # Useage
+Using Files
 ```
 java -jar param-filter.jar --input=<INPUT_FILE> --output=<OUTPUT_FILE>
+```
+
+Using Pipes
+```
+echo 'Hello, my name is ${env.USER}' | java -jar param-filter.jar
 ```
 
 # Supported Parameter Stores

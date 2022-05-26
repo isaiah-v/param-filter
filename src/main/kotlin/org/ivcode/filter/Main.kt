@@ -5,19 +5,40 @@ import org.ivcode.filter.filter.Filter
 import org.ivcode.filter.params.ParameterStoreMap
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import java.lang.IllegalStateException
 
 
 fun main(argv: Array<String>) {
-    val args = Args.create(argv)
+    try {
+        runFilter(Args.create(argv))
+    } catch (th: Throwable) {
+        System.err.println(th.message)
+        Args.printHelp()
+    }
+}
+
+fun runFilter(args: Args) {
     val parameterStoreMap = ParameterStoreMap.create(args)
 
-    FileInputStream(args.getInput()).use { input ->
-        if(args.getOutput()==null) {
-            Filter(parameterStoreMap).filter(input, System.out)
+    val inputStream = if (args.getInput()!=null) {
+        FileInputStream(args.getInput())
+    } else {
+        if(System.`in`.available() > 0) {
+            System.`in`
         } else {
-            FileOutputStream(args.getOutput()).use { output ->
-                Filter(parameterStoreMap).filter(input, output)
-            }
+            throw IllegalStateException("input file not defined and standard in data not available")
+        }
+    }
+
+    val outputStream = if (args.getOutput()!=null) {
+        FileOutputStream(args.getOutput())
+    } else {
+        System.out
+    }
+
+    inputStream.use { input ->
+        outputStream.use { output ->
+            Filter(parameterStoreMap).filter(input, output)
         }
     }
 }

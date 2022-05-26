@@ -22,14 +22,16 @@ class Args {
                 .addObject(argObject)
                 .build()
 
-            try {
-                jCommander.parse(*argv)
-            } catch (e: ParameterException) {
-                jCommander.usage()
-                throw e
-            }
+            jCommander.parse(*argv)
 
             return argObject
+        }
+
+        fun printHelp() {
+            JCommander.newBuilder()
+                .addObject(Args())
+                .build()
+                .usage()
         }
     }
 }

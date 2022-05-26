@@ -9,7 +9,14 @@ import java.lang.IllegalStateException
 
 
 fun main(argv: Array<String>) {
-    val args = Args.create(argv)
+    try {
+        runFilter(Args.create(argv))
+    } catch (th: Throwable) {
+        Args.printHelp()
+    }
+}
+
+fun runFilter(args: Args) {
     val parameterStoreMap = ParameterStoreMap.create(args)
 
     val inputStream = if (args.getInput()!=null) {

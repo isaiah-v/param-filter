@@ -12,7 +12,7 @@ class Args {
     @Parameter(names = ["-o", "--out"], description = "output filename (default: standard out)")
     private var output: File? = null
 
-    fun getInput(): File = input!!
+    fun getInput(): File? = input
     fun getOutput(): File? = output
 
     companion object {

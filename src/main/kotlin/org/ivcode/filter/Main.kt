@@ -5,6 +5,7 @@ import org.ivcode.filter.filter.Filter
 import org.ivcode.filter.params.ParameterStoreMap
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import java.lang.IllegalStateException
 
 
 fun main(argv: Array<String>) {
@@ -14,7 +15,11 @@ fun main(argv: Array<String>) {
     val inputStream = if (args.getInput()!=null) {
         FileInputStream(args.getInput())
     } else {
-        System.`in`
+        if(System.`in`.available() > 0) {
+            System.`in`
+        } else {
+            throw IllegalStateException("no input defined")
+        }
     }
 
     val outputStream = if (args.getOutput()!=null) {

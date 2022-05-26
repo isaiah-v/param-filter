@@ -12,6 +12,7 @@ fun main(argv: Array<String>) {
     try {
         runFilter(Args.create(argv))
     } catch (th: Throwable) {
+        System.err.println(th.message)
         Args.printHelp()
     }
 }

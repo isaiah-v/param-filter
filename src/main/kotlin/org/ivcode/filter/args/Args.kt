@@ -6,10 +6,10 @@ import com.beust.jcommander.ParameterException
 import java.io.File
 
 class Args {
-    @Parameter(names = ["-i", "--in"], description = "input filename", required = true)
+    @Parameter(names = ["-i", "--in"], description = "input filename (default: standard in)")
     private var input: File? = null
 
-    @Parameter(names = ["-o", "--out"], description = "output filename")
+    @Parameter(names = ["-o", "--out"], description = "output filename (default: standard out)")
     private var output: File? = null
 
     fun getInput(): File = input!!

@@ -11,13 +11,21 @@ fun main(argv: Array<String>) {
     val args = Args.create(argv)
     val parameterStoreMap = ParameterStoreMap.create(args)
 
-    FileInputStream(args.getInput()).use { input ->
-        if(args.getOutput()==null) {
-            Filter(parameterStoreMap).filter(input, System.out)
-        } else {
-            FileOutputStream(args.getOutput()).use { output ->
-                Filter(parameterStoreMap).filter(input, output)
-            }
+    val inputStream = if (args.getInput()!=null) {
+        FileInputStream(args.getInput())
+    } else {
+        System.`in`
+    }
+
+    val outputStream = if (args.getOutput()!=null) {
+        FileOutputStream(args.getOutput())
+    } else {
+        System.out
+    }
+
+    inputStream.use { input ->
+        outputStream.use { output ->
+            Filter(parameterStoreMap).filter(input, output)
         }
     }
 }

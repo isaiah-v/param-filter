@@ -1,6 +1,5 @@
 package org.ivcode.filter.params
 
-import org.ivcode.filter.args.Args
 import software.amazon.awssdk.services.ssm.SsmClient
 import software.amazon.awssdk.services.ssm.model.GetParameterRequest
 
@@ -18,9 +17,5 @@ class AwsParameterStore (
 
         val response = client.getParameter(request)
         return response.parameter().value()
-    }
-
-    companion object {
-        fun create(args: Args) = AwsParameterStore(SsmClient.builder().build())
     }
 }

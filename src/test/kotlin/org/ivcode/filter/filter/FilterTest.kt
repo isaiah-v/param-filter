@@ -1,6 +1,9 @@
 package org.ivcode.filter.filter
 
+import org.ivcode.filter.args.Args
+import org.ivcode.filter.params.ParameterStoreMap
 import org.ivcode.filter.test.MapParameterStore
+import org.ivcode.filter.test.MapParameterStoreFactory
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.params.ParameterizedTest
@@ -31,13 +34,15 @@ class FilterTest {
             "C" to "c",
             "hello" to "world"
         )
-        val storeMap = mapOf(
-            "test" to MapParameterStore(varMap)
-        )
+
+        val args = Args()
+        val parameterStoreMap = ParameterStoreMap(args, mapOf(
+            "test" to MapParameterStoreFactory(varMap)
+        ))
 
         val actual = StringInputStream(input).use { inputStream->
             ByteArrayOutputStream().use { outputStream ->
-                Filter(storeMap).filter(inputStream, outputStream)
+                Filter(parameterStoreMap).filter(inputStream, outputStream)
                 String(outputStream.toByteArray())
             }
         }

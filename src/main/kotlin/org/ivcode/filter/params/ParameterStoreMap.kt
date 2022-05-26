@@ -10,7 +10,7 @@ class ParameterStoreMap(
 
     fun get(key: String): ParameterStore? {
         return storeMap.computeIfAbsent(key) {
-            factoryMap[key]?.createParameterStore(args) ?: null
+            factoryMap[key]?.createParameterStore(args)
         }
     }
 

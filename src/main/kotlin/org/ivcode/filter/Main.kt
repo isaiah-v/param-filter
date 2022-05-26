@@ -26,7 +26,7 @@ fun runFilter(args: Args) {
         if(System.`in`.available() > 0) {
             System.`in`
         } else {
-            throw IllegalStateException("no input defined")
+            throw IllegalStateException("input file not defined and standard in data not available")
         }
     }
 

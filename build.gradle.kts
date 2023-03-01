@@ -17,8 +17,10 @@ application {
 dependencies {
     implementation(kotlin("stdlib"))
     implementation("software.amazon.awssdk:ssm:2.17.194")
+    implementation("software.amazon.awssdk:secretsmanager:2.17.194")
     implementation("org.slf4j:slf4j-nop:1.7.30")
     implementation("com.beust:jcommander:1.82")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.14.2")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.2")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.4.2")

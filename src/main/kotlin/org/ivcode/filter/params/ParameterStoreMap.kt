@@ -18,7 +18,8 @@ class ParameterStoreMap(
         fun create(args: Args) =
             ParameterStoreMap(args, mapOf(
                 "env" to EnvParameterStoreFactory(),
-                "aws" to AwsParameterStoreFactory()
+                "aws" to AwsParameterStoreFactory(),
+                "aws-secrets" to AwsSecretsManagerParameterStoreFactory()
             ))
     }
 }
